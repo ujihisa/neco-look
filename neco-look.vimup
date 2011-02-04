@@ -1,0 +1,17 @@
+"script_name": neco-look
+"script_id": "3440"
+"script_type": utility
+"script_package": "{script_name}-{version}.zip"
+"required_vim_version": '7.3'
+"summary": A neocomplcache plugin for English, using look command
+"detailed_description": |
+  A neocomplcache plugin for `/usr/bin/look` for completing English.
+  
+  http://gyazo.com/c21c8201fa7a571c7665bc7455d88631.png
+"install_details": |
+  * install the latest neocomplcache.vim
+  * make sure if you already have `look` command
+  * Unarchive neco-look and put it into a dir of your &rtp.
+"versions":
+  - '1.0': Initial release in vim.org
+# vim: filetype=yaml
