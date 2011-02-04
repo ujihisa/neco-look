@@ -3,7 +3,7 @@
 "script_type": utility
 "script_package": "{script_name}-{version}.zip"
 "required_vim_version": '7.3'
-"summary": A neocomplcache plugin for English, using look command
+"summary": A neocomplcache plugin for `/usr/bin/look` for completing words in English.
 "detailed_description": |
   A neocomplcache plugin for `/usr/bin/look` for completing English.
   

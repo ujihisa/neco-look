@@ -1,6 +1,6 @@
 # neocomplcache-look (neco-look)
 
-A neocomplcache plugin for `/usr/bin/look` for completing English.
+A neocomplcache plugin for `/usr/bin/look` for completing words in English.
 
 ## install
 
