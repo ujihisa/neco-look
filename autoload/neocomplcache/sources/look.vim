@@ -15,7 +15,7 @@ function! s:source.get_keyword_pos(cur_text)
 endfunction
 
 function! s:source.get_keyword_list(cur_keyword_str)
-  if len(a:cur_keyword_str) < neocomplcache#get_completion_length('look')
+  if !neocomplcache#is_text_mode() || len(a:cur_keyword_str) < neocomplcache#get_completion_length('look')
     return []
   endif
   let list = split(neocomplcache#system('look ' . a:cur_keyword_str), "\n")
