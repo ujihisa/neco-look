@@ -13,5 +13,6 @@
   * make sure if you already have `look` command
   * Unarchive neco-look and put it into a dir of your &rtp.
 "versions":
+  - '1.1': Bugfix. It doesn't crash when you input a multibyte word
   - '1.0': Initial release in vim.org
 # vim: filetype=yaml
