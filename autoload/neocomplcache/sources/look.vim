@@ -15,9 +15,11 @@ function! s:source.get_keyword_list(cur_keyword_str)
         \ || a:cur_keyword_str !~ '^\w\+$' " always ignore multibyte characters
     return []
   endif
-
-  return map(split(neocomplcache#system('look ' . a:cur_keyword_str), "\n"),
-        \ "{'word': v:val, 'menu': 'look'}")
+  let list = split(neocomplcache#system('look ' . a:cur_keyword_str), "\n")
+  if vimproc#get_last_status() != 0
+    return []
+  endif
+  return map(list, "{'word': v:val, 'menu': 'look'}")
 endfunction
 
 function! neocomplcache#sources#look#define()
