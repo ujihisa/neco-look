@@ -12,7 +12,7 @@ endfunction
 
 function! s:source.get_keyword_list(cur_keyword_str)
   if !neocomplcache#is_text_mode()
-        \ || a:cur_keyword_str !~ '^\w\+$' " always ignore multibyte characters
+        \ || a:cur_keyword_str !~ '^[a-zA-Z]\+$'
     return []
   endif
   let list = split(neocomplcache#system('look ' . a:cur_keyword_str), "\n")
