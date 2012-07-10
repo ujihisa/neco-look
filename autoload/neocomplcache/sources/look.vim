@@ -12,11 +12,11 @@ endfunction
 
 function! s:source.get_keyword_list(cur_keyword_str)
   if !neocomplcache#is_text_mode()
-        \ || a:cur_keyword_str !~ '^[a-zA-Z]\+$'
+        \ || a:cur_keyword_str !~ '^[[:alpha:]]\+$'
     return []
   endif
-  let list = split(neocomplcache#system('look ' . a:cur_keyword_str), "\n")
-  if vimproc#get_last_status() != 0
+  let list = split(neocomplcache#util#system('look ' . a:cur_keyword_str), "\n")
+  if neocomplcache#util#get_last_status() != 0
     return []
   endif
   return map(list, "{'word': v:val, 'menu': 'look'}")
