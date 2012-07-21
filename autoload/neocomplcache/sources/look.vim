@@ -19,7 +19,7 @@ function! s:source.get_keyword_list(cur_keyword_str)
   if neocomplcache#util#get_last_status() != 0
     return []
   endif
-  return map(list, "{'word': v:val, 'menu': 'look'}")
+  return map(list, "{'word': v:val, 'menu': '[look]'}")
 endfunction
 
 function! neocomplcache#sources#look#define()
