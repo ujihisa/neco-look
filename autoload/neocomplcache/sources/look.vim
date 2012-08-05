@@ -11,7 +11,7 @@ function! s:source.finalize()
 endfunction
 
 function! s:source.get_keyword_list(cur_keyword_str)
-  if !neocomplcache#is_text_mode()
+  if !(neocomplcache#is_text_mode() || neocomplcache#within_comment())
         \ || a:cur_keyword_str !~ '^[[:alpha:]]\+$'
     return []
   endif
@@ -19,7 +19,7 @@ function! s:source.get_keyword_list(cur_keyword_str)
   if neocomplcache#util#get_last_status() != 0
     return []
   endif
-  return map(list, "{'word': v:val, 'menu': 'look'}")
+  return map(list, "{'word': v:val, 'menu': '[look]'}")
 endfunction
 
 function! neocomplcache#sources#look#define()
