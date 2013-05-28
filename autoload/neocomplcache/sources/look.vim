@@ -3,14 +3,8 @@ let s:source = {
       \ 'kind': 'plugin',
       \ 'mark': '[look]',
       \ 'max_candidates': 30,
+      \ 'min_pattern_length' : 3,
       \ }
-
-function! s:source.initialize()
-  call neocomplcache#set_completion_length('look', 3)
-endfunction
-
-function! s:source.finalize()
-endfunction
 
 function! s:source.get_keyword_list(cur_keyword_str)
   if !(neocomplcache#is_text_mode() || neocomplcache#within_comment())
