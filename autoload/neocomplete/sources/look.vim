@@ -2,8 +2,9 @@ let s:source = {
       \ 'name': 'look',
       \ 'kind': 'plugin',
       \ 'mark': '[look]',
-      \ 'max_candidates': 30,
-      \ 'min_pattern_length' : 3,
+      \ 'max_candidates': 15,
+      \ 'min_pattern_length' : 4,
+      \ 'is_volatile' : 1,
       \ }
 
 function! s:source.gather_candidates(context)
