@@ -11,3 +11,7 @@ A neocomplcache plugin for `/usr/bin/look` for completing words in English.
 ## Author
 
 Tatsuhiro Ujihisa
+
+## License
+
+GPL-3 or later

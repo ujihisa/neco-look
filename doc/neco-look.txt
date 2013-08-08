@@ -1,0 +1,22 @@
+*neco-look.txt*	A neocomplcache.vim/neocomplete.vim plugin to complete English
+		words.
+
+Author: ujihisa
+Licence: GPL-3 or later
+
+==============================================================================
+INTRODUCTION					*neco-look-introduction*
+
+Requirement:
+- Either
+  - neocomplcache.vim or
+  - neocomplete.vim
+- look command
+
+Latest version:
+https://github.com/ujihisa/neco-look
+
+
+
+==============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
