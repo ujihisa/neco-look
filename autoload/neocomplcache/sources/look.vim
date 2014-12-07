@@ -1,3 +1,6 @@
+let s:save_cpo = &cpo
+set cpo&vim
+
 let s:source = {
       \ 'name': 'look',
       \ 'kind': 'plugin',
@@ -25,3 +28,6 @@ endfunction
 function! neocomplcache#sources#look#define()
   return executable('look') ? s:source : {}
 endfunction
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
