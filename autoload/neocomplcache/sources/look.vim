@@ -11,10 +11,11 @@ let s:source = {
       \ }
 
 function! s:source.get_keyword_list(cur_keyword_str)
-  if !(neocomplcache#is_text_mode() || neocomplcache#within_comment())
+  if !(&spell || neocomplcache#is_text_mode() || neocomplcache#within_comment())
         \ || a:cur_keyword_str !~ '^[[:alpha:]]\+$'
     return []
   endif
+
   let list = split(neocomplcache#util#system(
         \ 'look ' . a:cur_keyword_str .
         \ '| head -n ' . self.max_candidates), "\n")
