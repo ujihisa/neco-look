@@ -11,7 +11,7 @@ let s:source = {
       \ }
 
 function! s:source.gather_candidates(context)
-  if !(neocomplete#is_text_mode() || neocomplete#within_comment())
+  if !(&spell || neocomplete#is_text_mode() || neocomplete#within_comment())
         \ || a:context.complete_str !~ '^[[:alpha:]]\+$'
     return []
   endif
