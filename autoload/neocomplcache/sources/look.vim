@@ -23,7 +23,7 @@ function! s:source.get_keyword_list(cur_keyword_str)
     return []
   endif
 
-  return list
+  return map(list, "substitute(v:val, '^' . tolower(a:cur_keyword_str), a:cur_keyword_str, '')")
 endfunction
 
 function! neocomplcache#sources#look#define()

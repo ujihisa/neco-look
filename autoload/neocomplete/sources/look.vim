@@ -23,7 +23,7 @@ function! s:source.gather_candidates(context)
     return []
   endif
 
-  return list
+  return map(list, "substitute(v:val, '^' . tolower(a:context.complete_str), a:context.complete_str, '')")
 endfunction
 
 function! neocomplete#sources#look#define()
