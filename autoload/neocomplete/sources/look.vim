@@ -11,7 +11,8 @@ let s:source = {
       \ }
 
 function! s:source.gather_candidates(context)
-  if !(&spell || neocomplete#is_text_mode() || neocomplete#within_comment())
+  if !(&spell || neocomplete#is_text_mode()
+        \ || neocomplete#within_comment())
         \ || a:context.complete_str !~ '^[[:alpha:]]\+$'
     return []
   endif
@@ -23,7 +24,9 @@ function! s:source.gather_candidates(context)
     return []
   endif
 
-  return map(list, "substitute(v:val, '^' . tolower(a:context.complete_str), a:context.complete_str, '')")
+  return map(list, "substitute(v:val,
+        \ '^' . tolower(a:context.complete_str),
+        \ a:context.complete_str, '')")
 endfunction
 
 function! neocomplete#sources#look#define()

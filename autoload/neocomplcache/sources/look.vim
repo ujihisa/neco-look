@@ -11,7 +11,8 @@ let s:source = {
       \ }
 
 function! s:source.get_keyword_list(cur_keyword_str)
-  if !(&spell || neocomplcache#is_text_mode() || neocomplcache#within_comment())
+  if !(&spell || neocomplcache#is_text_mode()
+        \ || neocomplcache#within_comment())
         \ || a:cur_keyword_str !~ '^[[:alpha:]]\+$'
     return []
   endif
@@ -23,7 +24,8 @@ function! s:source.get_keyword_list(cur_keyword_str)
     return []
   endif
 
-  return map(list, "substitute(v:val, '^' . tolower(a:cur_keyword_str), a:cur_keyword_str, '')")
+  return map(list, "substitute(v:val,
+        \ '^' . tolower(a:cur_keyword_str), a:cur_keyword_str, '')")
 endfunction
 
 function! neocomplcache#sources#look#define()
