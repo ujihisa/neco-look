@@ -23,8 +23,6 @@
 # }}}
 #=============================================================================
 
-import os
-import os.path
 import subprocess
 from .base import Base
 
