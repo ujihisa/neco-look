@@ -13,7 +13,7 @@ class Source(Base):
         self.name = 'look'
         self.mark = '[look]'
         self.min_pattern_length = 4
-        self.executable_look = self.vim.eval('executable("look")')
+        self.executable_look = self.vim.funcs.executable('look')
         self.encoding = self.vim.eval('&encoding')
 
     def gather_candidates(self, context):
