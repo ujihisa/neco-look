@@ -13,8 +13,8 @@ class Source(Base):
         self.name = 'look'
         self.mark = '[look]'
         self.min_pattern_length = 4
-        self.executable_look = self.vim.funcs.executable('look')
-        self.encoding = self.vim.eval('&encoding')
+        self.executable_look = self.vim.call('executable', 'look')
+        self.is_volatile = True
 
     def gather_candidates(self, context):
         if not self.executable_look:
@@ -26,5 +26,4 @@ class Source(Base):
         except subprocess.CalledProcessError:
             return []
 
-        return [{ 'word': x.decode(self.encoding) } for x in words]
-
+        return [{ 'word': x.decode(context['encoding']) } for x in words]
