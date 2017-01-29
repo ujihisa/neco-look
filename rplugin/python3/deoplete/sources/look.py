@@ -3,6 +3,7 @@
 # AUTHOR: Shougo Matsushita <Shougo.Matsu at gmail.com>
 #=============================================================================
 
+import re
 import subprocess
 from .base import Base
 
@@ -21,9 +22,14 @@ class Source(Base):
             return []
 
         try:
-            words = subprocess.check_output(
-                    ['look', context['complete_str']]).splitlines()
+            words = [x.decode(context['encoding']) for x in
+                     subprocess.check_output(
+                         ['look', context['complete_str']]).splitlines()]
         except subprocess.CalledProcessError:
             return []
+        if re.match('[A-Z][a-z0-9_-]*$', context['complete_str']):
+            words = [x[0].upper() + x[1:] for x in words]
+        elif re.match('[A-Z][A-Z0-9_-]*$', context['complete_str']):
+            words = [x.upper() for x in words]
 
-        return [{ 'word': x.decode(context['encoding']) } for x in words]
+        return [{ 'word': x } for x in words]
