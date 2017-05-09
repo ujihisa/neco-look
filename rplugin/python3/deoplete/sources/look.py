@@ -3,6 +3,7 @@
 # AUTHOR: Shougo Matsushita <Shougo.Matsu at gmail.com>
 #=============================================================================
 
+import os
 import re
 import subprocess
 from .base import Base
@@ -13,18 +14,36 @@ class Source(Base):
 
         self.name = 'look'
         self.mark = '[look]'
-        self.min_pattern_length = 4
-        self.executable_look = self.vim.call('executable', 'look')
+
+        def get_neco_look_var(shortname, default):
+            return vim.vars.get('deoplete#neco_look#{}'.format(shortname), default)
+
+        self.min_pattern_length = get_neco_look_var('min_pattern_length', 4)
+        self.filetypes = get_neco_look_var('filetypes', [])
         self.is_volatile = True
+
+        self.executable_look = self.vim.call('executable', 'look')
+        self.words_source = get_neco_look_var('words_source', None)
+        if self.words_source is not None:
+            self.words_source = os.path.expanduser(self.words_source)
+
+    def _query_look(self, querystring):
+        command = ['look', querystring]
+
+        if self.words_source is not None:
+            command.append(self.words_source)
+
+        return subprocess.check_output(command).splitlines()
 
     def gather_candidates(self, context):
         if not self.executable_look:
             return []
 
         try:
-            words = [x.decode(context['encoding']) for x in
-                     subprocess.check_output(
-                         ['look', context['complete_str']]).splitlines()]
+            words = [
+                    x.decode(context['encoding'])
+                    for x in self._query_look(context['complete_str'])
+                    ]
         except subprocess.CalledProcessError:
             return []
         if re.match('[A-Z][a-z0-9_-]*$', context['complete_str']):
