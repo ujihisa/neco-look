@@ -15,16 +15,14 @@ class Source(Base):
         self.name = 'look'
         self.mark = '[look]'
 
-        def get_neco_look_var(shortname, default):
-            return vim.vars.get('deoplete#neco_look#{}'.format(shortname), default)
+        def get_look_var(shortname, default):
+            return vim.vars.get('deoplete#look#{}'.format(shortname), default)
 
-        self.min_pattern_length = get_neco_look_var('min_pattern_length', 4)
-        self.filetypes = get_neco_look_var('filetypes', [])
         self.is_volatile = True
 
         self.executable_look = self.vim.call('executable', 'look')
-        self.words_source = get_neco_look_var('words_source', None)
-        if self.words_source is not None:
+        self.words_source = get_look_var('words_source', None)
+        if self.words_source:
             self.words_source = os.path.expanduser(self.words_source)
 
     def _query_look(self, querystring):
