@@ -24,7 +24,7 @@ class Source(Base):
         try:
             words = [x.decode(context['encoding']) for x in
                      subprocess.check_output(
-                         ['look', context['complete_str']]).splitlines()]
+                         ['look', context['complete_str'][:2]]).splitlines()]
         except subprocess.CalledProcessError:
             return []
         if re.match('[A-Z][a-z0-9_-]*$', context['complete_str']):
