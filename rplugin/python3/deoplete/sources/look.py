@@ -39,10 +39,13 @@ class Source(Base):
             return []
 
         try:
+            # We're adding :2 here to support head prefixed fuzzy search
+            # "look" will return some results and deoplete will fuzzy search in
+            # the rest.
             words = [
-                    x.decode(context['encoding'])
-                    for x in self._query_look(context['complete_str'])
-                    ]
+                x.decode(context['encoding'])
+                for x in self._query_look(context['complete_str'][:2])
+            ]
         except subprocess.CalledProcessError:
             return []
         if re.match('[A-Z][a-z0-9_-]*$', context['complete_str']):
