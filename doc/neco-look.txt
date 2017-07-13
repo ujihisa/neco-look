@@ -11,7 +11,7 @@ Requirements:
 - One of
   - neocomplcache.vim;
   - neocomplete.vim; or
-  - deoplete
+  - deoplete.vim
 - look command
 
 Latest version:
