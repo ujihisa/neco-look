@@ -3,7 +3,7 @@
 # AUTHOR: Shougo Matsushita <Shougo.Matsu at gmail.com>
 #=============================================================================
 
-import os
+from os.path import expanduser, expandvars
 import re
 import subprocess
 from .base import Base
@@ -14,6 +14,7 @@ class Source(Base):
 
         self.name = 'look'
         self.mark = '[look]'
+        self.min_pattern_length = 4
 
         def get_look_var(shortname, default):
             return vim.vars.get('deoplete#look#{}'.format(shortname), default)
@@ -21,15 +22,15 @@ class Source(Base):
         self.is_volatile = True
 
         self.executable_look = self.vim.call('executable', 'look')
-        self.words_source = get_look_var('words_source', None)
-        if self.words_source:
-            self.words_source = os.path.expanduser(self.words_source)
+        self.words = get_look_var('words', None)
+        if self.words:
+            self.words = expandvars(expanduser(self.words))
 
     def _query_look(self, querystring):
         command = ['look', querystring]
 
-        if self.words_source is not None:
-            command.append(self.words_source)
+        if self.words is not None:
+            command.append(self.words)
 
         return subprocess.check_output(command).splitlines()
 

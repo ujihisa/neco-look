@@ -20,8 +20,8 @@ https://github.com/ujihisa/neco-look
 ==============================================================================
 VARIABLES                                        neco-look-variables
 
-                                        g:deoplete#look#words_source
-g:deoplete#look#words_source
+                                        g:deoplete#look#words
+g:deoplete#look#words
 		Change the words source for the look command. This should be a
                 file with a word on each line in sorted order. Currently only
                 supported for the deoplete source.
