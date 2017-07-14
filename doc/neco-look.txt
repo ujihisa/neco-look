@@ -7,16 +7,24 @@ Licence: GPL-3 or later
 ==============================================================================
 INTRODUCTION					*neco-look-introduction*
 
-Requirement:
-- Either
-  - neocomplcache.vim or
-  - neocomplete.vim
+Requirements:
+- One of
+  - neocomplcache.vim;
+  - neocomplete.vim; or
+  - deoplete.nvim
 - look command
 
 Latest version:
 https://github.com/ujihisa/neco-look
 
+==============================================================================
+VARIABLES                                        neco-look-variables
 
+                                        g:deoplete#look#words
+g:deoplete#look#words
+		Change the words source for the look command. This should be a
+                file with a word on each line in sorted order. Currently only
+                supported for the deoplete source.
 
 ==============================================================================
 vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
