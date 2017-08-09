@@ -18,8 +18,7 @@ function! s:source.get_keyword_list(cur_keyword_str)
   endif
 
   let list = split(neocomplcache#util#system(
-        \ 'look ' . a:cur_keyword_str .
-        \ '| head -n ' . self.max_candidates), "\n")
+        \ 'look ' . a:cur_keyword_str), "\n")
   if neocomplcache#util#get_last_status()
     return []
   endif
