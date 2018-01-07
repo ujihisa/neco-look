@@ -43,7 +43,7 @@ class Source(Base):
             # "look" will return some results and deoplete will fuzzy search in
             # the rest.
             words = [
-                x.decode(context['encoding'])
+                x.decode(context['encoding'], errors='ignore')
                 for x in self._query_look(context['complete_str'][:2])
             ]
         except subprocess.CalledProcessError:
