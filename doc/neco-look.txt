@@ -12,7 +12,8 @@ Requirements:
   - neocomplcache.vim;
   - neocomplete.vim; or
   - deoplete.nvim
-- look command
+- `look` command
+  - Arch Linux: `sudo pacman -S words`
 
 Latest version:
 https://github.com/ujihisa/neco-look
