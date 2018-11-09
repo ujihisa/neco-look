@@ -1,6 +1,6 @@
-# neco-look: look completion for neocomplcache/neocomplete/deoplete
+# neco-look: look completion for deoplete/neocomplete/neocomplcache
 
-A neocomplcache/neocomplete/deoplete plugin for `/usr/bin/look` for completing words in English.
+A deoplete/neocomplete/neocomplcache plugin for `/usr/bin/look` for completing words in English.
 
 ## install
 
@@ -9,12 +9,17 @@ A neocomplcache/neocomplete/deoplete plugin for `/usr/bin/look` for completing w
     * neocomplete.vim (its development has been discontinued)
     * neocomplcache.vim (its development has been discontinued)
 * Make sure if you already have `look` command
-* Unarchive neco-look and put it into a dir of your &rtp.
+    * Mac: this should be preinstalled
+    * ArchLinux: https://www.archlinux.org/packages/core/x86_64/util-linux/
+    * Windows: https://github.com/ujihisa/neco-look/wiki
+* Use your favourite Vim plugin manager to install neco-look itself as well
+    * e.g. [dein.vim](https://github.com/Shougo/dein.vim)
+        * `call dein#add('ujihisa/neco-look')` in your ~/.vimrc
 
-## Author
+## Authors
 
-Tatsuhiro Ujihisa
-Shougo Matsushita
+* Tatsuhiro Ujihisa
+* Shougo Matsushita
 
 ## License
 
