@@ -17,7 +17,10 @@ class Source(Base):
         self.min_pattern_length = 4
 
         def get_look_var(shortname, default):
-            return vim.vars.get('deoplete#look#{}'.format(shortname), default)
+            name = 'deoplete#look#{}'.format(shortname)
+            if name not in vim.vars:
+                return default
+            return vim.vars[name]
 
         self.is_volatile = True
 
