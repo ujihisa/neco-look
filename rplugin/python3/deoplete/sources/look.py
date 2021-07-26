@@ -30,7 +30,7 @@ class Source(Base):
             self.words = expandvars(expanduser(self.words))
 
     def _query_look(self, querystring):
-        command = ['look', querystring]
+        command = ['look', '--', querystring]
 
         if self.words is not None:
             command.append(self.words)
